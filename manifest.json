@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Planner Picker",
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions": [
+        "scripting",
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": [ "contentScript.js" ],
+            "run_at": "document_idle"
+        }
+    ],
+    "icons": {
+        "32": "icon.png"
+    }
+}
