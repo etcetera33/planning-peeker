@@ -1,6 +1,6 @@
 # Planning Peeker 🔍🃏
 
-# <img src="assets/images/icon-128.png" alt="Planning Peeker Icon" width="40" height="40" style="vertical-align: middle;"/> Planning Peeker 🔍🃏
+# <img src="assets/icon.png" alt="Planning Peeker Icon" width="40" height="40" style="vertical-align: middle;"/> Planning Peeker 🔍🃏
 
 **Planning Peeker** is a Chrome extension that lets you peek at Planning Poker marks before the cards are officially flipped.
 

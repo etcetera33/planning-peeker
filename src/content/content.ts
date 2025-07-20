@@ -1,3 +1,5 @@
+import { ActionConstant } from "../constants/actionConstants";
+
 function onReady(callback: () => void) {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', callback);
@@ -9,7 +11,7 @@ function onReady(callback: () => void) {
 onReady(async () => {
     await new Promise(resolve => setTimeout(resolve, 3000));
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message.type === "REQUEST_PAGE_CHANGED") {
+        if (message.type === ActionConstant.RequestPageChange) {
             sendPeoplesMarks();
             // Sending a response received back
             sendResponse({ status: 'received' });
@@ -61,8 +63,8 @@ onReady(async () => {
     
     async function sendPeoplesMarks() {
         var data = await getPeopleWithMarks();
-        const arr = Array.from(data.entries()); // if you want an array of [key, value] pairs
-        chrome.runtime.sendMessage({ type: "PAGE_CHANGED", elements: arr });
+        const arr = Array.from(data.entries());
+        chrome.runtime.sendMessage({ type: ActionConstant.PageChanged, elements: arr });
     }
 });
 

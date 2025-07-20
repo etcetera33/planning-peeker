@@ -1,3 +1,5 @@
+import { ActionConstant } from "../constants/actionConstants";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Get DOM elements
     const refreshButton = document.getElementById('refreshButton') as HTMLButtonElement;
@@ -32,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function requestMarks() {
-        chrome.runtime.sendMessage({ type: "REQUEST_PAGE_CHANGED" });
+        chrome.runtime.sendMessage({ type: ActionConstant.RequestPageChange });
     }
 
     // Event listeners
     refreshButton.addEventListener('click', requestMarks);
     chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
-        if (message.type === "PAGE_CHANGED") {
+        if (message.type === ActionConstant.PageChanged) {
             await visualizePeopleWithData(message.elements);
         }
     });
